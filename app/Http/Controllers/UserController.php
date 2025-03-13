@@ -9,13 +9,11 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    // Show Registration Form
     public function showRegistrationForm()
     {
         return view('auth.register');
     }
 
-    // Handle Registration
     public function register(Request $request)
     {
         $request->validate([
@@ -33,13 +31,11 @@ class UserController extends Controller
         return redirect('/login')->with('success', 'Registration successful. Please log in.');
     }
 
-    // Show Login Form
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
-    // Handle Login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -54,7 +50,6 @@ class UserController extends Controller
         return back()->withErrors(['email' => 'Invalid credentials. Please try again.']);
     }
 
-    // Handle Logout
     public function logout()
     {
         Auth::logout();
