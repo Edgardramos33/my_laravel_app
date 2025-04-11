@@ -44,7 +44,7 @@ class UserController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended('/');
+            return redirect()->intended('/index');
         }
 
         return back()->withErrors(['email' => 'Invalid credentials. Please try again.']);
@@ -53,6 +53,6 @@ class UserController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/login')->with('success', 'Logged out successfully.');
+        return redirect('/index')->with('success', 'Logged out successfully.');
     }
 }
